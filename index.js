@@ -12,13 +12,7 @@ window.addEventListener('load', () => {
     ];
 
     // console.log(sounds)
-    //create a function that makes bubbles
-    const createBubbles = (index) => {
-        const bubble = document.createElement("div")
-        visual.appendChild(bubble);
-        bubble.style.backgroundColor = colors[index]
-        bubble.style.animation = "jump 1s ease";
-    }
+
 
     pads.forEach((pad, index) => {
         pad.addEventListener('click', function() {
@@ -30,7 +24,16 @@ window.addEventListener('load', () => {
 
     });
 
-
+    //create a function that makes bubbles
+    const createBubbles = (index) => {
+        const bubble = document.createElement("div")
+        visual.appendChild(bubble);
+        bubble.style.backgroundColor = colors[index]
+        bubble.style.animation = "jump 1s ease";
+        bubble.addEventListener('animationend', function() {
+            visual.removeChild(this);
+        });
+    }
 
 });
 
